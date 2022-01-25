@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quizzing</title>
+</head>
+<body>
+<style>
+    div.b{
+        text-align: center;
+        font-size: xx-large;
+        color: brown;
+    }
+    a.text-decoration{
+        color: black;
+        text-decoration: none;
+        background: gray;
+    }
+    div#quiz {
+        font-size: x-large;
+        text-align:center;
+        width: 700px;
+        height: 300px;
+        border: outset;
+        margin: auto;
+    }
+    div#question {
+        width: 100%;
+        height: 120px;
+        margin-bottom: 20px;
+        background-color: palegoldenrod ;
+
+    }
+    button#ans1 {
+        width: 300px;
+        height: 50px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    button#ans2 {
+        width: 300px;
+        height: 50px;
+        margin-left: 50px;
+    }
+    button#ans3 {
+        width: 300px;
+        height: 50px;
+        margin-left: 20px;
+    }
+    button#ans4 {
+        width: 300px;
+        height: 50px;
+        margin-left: 50px;
+    }
+</style>
+<div  class="b">
+    <h1>Welcome to quizzing!</h1>
+    <a class="text-decoration" href="#quiz">Bắt đầu</a >
+</div>
+<div id="quiz">
+    <div id="question"></div>
+    <button onclick="chooseAnswer(this.id)" id="ans1">1</button>
+    <button onclick="chooseAnswer(this.id)" id="ans2">2</button>
+    <button onclick="chooseAnswer(this.id)" id="ans3">3</button>
+    <button onclick="chooseAnswer(this.id)" id="ans4">4</button>
+</div>
+<button onclick="nextQuiz()" id="next">Câu tiếp theo</button>
+<button onclick="displayQuiz(0)" id="restart">Chơi lại</button>
+<script src="quiz.js"></script>
+<script src="ManagerQuiz.js"></script>
+<script>
+    let managerGame= new ManagerQuiz(5);
+     managerGame.addQuiz(quiz1);
+     managerGame.addQuiz(quiz2);
+     managerGame.addQuiz(quiz3);
+     managerGame.addQuiz(quiz4);
+     managerGame.addQuiz(quiz5);
+     console.log(managerGame);
+
+     function displayQuiz(index) {
+         document.getElementById("question").innerHTML= managerGame.quizs[index].question;
+         for (let i = 1; i <= managerGame.quizs[index].answer.length ; i++) {
+             document.getElementById("ans"+i).innerHTML= managerGame.quizs[index].answer[i-1];
+         }
+         }
+     displayQuiz(0);
+    function nextQuiz() {
+      managerGame.nextQuiz();
+      displayQuiz(managerGame.current);
+    }
+
+    function chooseAnswer(id) {
+        let ans=document.getElementById(id).innerHTML;
+        managerGame.chooseAnswer(ans);
+    }
+
+</script>
+
+</body>
+</html>
