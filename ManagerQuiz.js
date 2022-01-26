@@ -35,6 +35,4 @@ class ManagerQuiz {
     addQuiz(quiz){
         this.quizs.push(quiz);
     }
-
-
 }
