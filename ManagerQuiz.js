@@ -13,9 +13,9 @@ class ManagerQuiz {
     }
     chooseAnswer(ans){
          if(this.checkAnswer(ans)) {
-             alert("đúng");
+             alert("Bạn đã trả lời đúng. Xin mời làm câu tiếp theo.");
          }else {
-             alert("sai")}
+             alert("Bạn đã trả lời sai. Vui lòng chơi lại")}
 
     }
     nextQuiz(){
@@ -26,11 +26,15 @@ class ManagerQuiz {
             this.current=0;
         }
     }
+    resetGame(){
+        this.current=0;
+    }
+    endGame(){
+        this.current=0;
+    }
     addQuiz(quiz){
         this.quizs.push(quiz);
     }
-    deleteQuiz(index){
-        this.quizs.splice(index,1)
-    }
+
 
 }
